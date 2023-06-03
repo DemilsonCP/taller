@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <title>API Page Visibility</title>
+<style>
+    medio{
+        text-align: center;
+    }
+    body{
+        background-color:  aquamarine;
+        }
+        h1{
+            color: black;
+            text-align: center;
+        }
+</style>
+</head>
+
+<body>
+    <h1>
+        Auto reproduccion del Video
+    </h1>
+    <br>
+    <script>
+        var video;
+        function iniciar() {
+            video = document.getElementById("medio");
+            document.addEventListener("visibilitychange", mostrarestado);
+            video.play();
+        }
+        function mostrarestado() {
+            var estado = document.visibilityState;
+            switch (estado) {
+                case "visible":
+                    video.play();
+                    break;
+                case "hidden":
+                    video.pause();
+                    break;
+            }
+        }
+        window.addEventListener("load", iniciar); 
+    </script>
+    <center>
+    <video id="medio" width="800" height="600" >
+        <source src="Sin título 26_720p_1.mp4">
+    </video>
+    </center>
+    
+
+</body>
+
+</html>

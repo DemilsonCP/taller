@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <title>API Page Visibility</title>
+    <style>
+        body {
+            background-color: rgb(158, 55, 14);
+        }
+
+        p {
+            font-size: 25px;
+            color: black;
+            text-align: center;
+
+        }
+    </style>
+
+<body>
+    <script>
+        function iniciar() {
+            document.addEventListener("visibilitychange", mostrarEstado);
+        }
+        function mostrarEstado() {
+            var elemento = document.getElementById("aplicacion");
+            elemento.innerHTML += "<br>" + document.visibilityState;
+        }
+        window.addEventListener("load", iniciar);
+    </script>
+    <br>
+    <section id="aplicacion">
+        <p>Abra otra pestaña o minimice esta ventana para cambiar el estado
+            de visibilidad</p>
+    </section>
+</body>
+</head>
+
+</html>

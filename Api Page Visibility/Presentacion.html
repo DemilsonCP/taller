@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exposicion de API</title>
+</head>
+<style>
+    body {
+         background-image: url(informacion.png); 
+        /* background-color: aliceblue; */
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-attachment: fixed;
+    }
+
+    h1 {
+        text-align: center;
+        font-size: 40px;
+        color: bisque;
+    }
+
+    h2 {
+        color: bisque;
+        font-size: 30px;
+    }
+
+    p {
+        color: black;
+        font-size: 20px;
+    }
+    li{
+        font-size: 20px;
+    }
+    img{
+        border-radius: 10px;
+    }
+    .gafas{
+        width: 500px;
+        border-radius: 10px;
+        
+    }
+    li a{
+        text-decoration: none;
+        color: rgb(219, 46, 19);
+    }
+    li a:hover{
+        font-size: 20px;
+        color: rgb(217, 255, 0);
+    }
+</style>
+
+<body>
+    <h1>API Page Visibility</h1>
+    <h2>Visibilidad</h2>
+    <p>Definicion</p>
+    <p>Esta API informa a la aplicación acerca del estado actual de
+        visibilidad del documento, por ejemplo, cuándo se oculta la pestaña o se minimiza la ventana,
+        de modo que nuestro código pueda decidir qué hacer mientras nadie mira. </p>
+        <center><img class="gafas" src="visibilidad.jfif" alt="Joven con gafas">  </center> <br>
+    
+    <h2>Estado</h2>
+    <p>La API incluye una propiedad para informar del estado actual</p>
+    <li><b>VisibilityState:</b>Esta propiedad devuelve el estado de visibilidad actual del documento.
+        Los valores disponibles son hidden y visible.</li> <br>
+    <li><b>Visibilitychange:</b>Este evento se desencadena cuando cambia el valor de la propiedad
+        visibilityState.</li> <br>
+        <center><img src="cambiar1.gif" alt="Cambio de ventana"></center> <br>
+
+    <li><a href="index.html" target="_blank">Ejemplo 1</a></li> <br>
+    <li><a href="video.html" target="_blank">Ejemplo 2</a></li> <br>
+
+    <h2>Sistema de Deteccion Completo</h2>
+    <p>
+        Los navegadores no cambian el valor de la propiedad visibilityState cuando el usuario
+        abre una nueva ventana. La API solo es capaz de detectar el cambio de visibilidad cuando la
+        pestaña se oculta por otra o cuando la ventana se minimiza. Para determinar el estado de
+        visibilidad en cualquier circunstancia, podemos complementar la API con los siguientes
+        eventos que facilita el objeto Window.
+    </p>
+    <li><b>blur:</b>Este evento se desencadena cuando la ventana pierde foco (también se
+        desencadena por los elementos).
+    </li> <br>
+    <li><b>focus:</b>Este evento se desencadena cuando la ventana se enfoca de nuevo (también se
+        desencadena por los elementos).</li> <br>
+    <li>En la <b>función iniciar()</b> agregamos listeners para los tres eventos. Se
+        declara la <b>función cambiarestado()</b> para responder a los eventos y procesar el valor
+        correspondiente al estado actual. Este valor queda determinado por cada uno de los eventos.
+        El evento <b>blur</b> envía el valor hidden; el evento <b>focus</b> envía el valor visible y el evento
+        <b>visibilitychange</b> envía el valor actual de la propiedad <b>visibilityState</b>.
+    </li> <br>
+    <li><a href="completo.html" target="_blank">Ejemplo 1</a></li>
+    <li><a href="otro.html" target="_blank">Extra</a></li>
+</body>
+
+</html>
