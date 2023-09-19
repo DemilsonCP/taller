@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modificar Proveedor</title>
+<link rel="stylesheet" href="http://localhost/ejercicio%20PHP/sistema_venta/css/modificarprove.css">
+</head>
+<body>
+
+
+  <div class="cuadro">
+
+    <center><h2>DATOS DEL NOMBRE A MODIFICAR</h2> </center> 
+
+    <form action="../php/modificarprove.php" method="POST">
+
+      <div class="texto">
+        <label for="nuevo">Nuevo Nombre:</label>
+        <input type="text" id="nuevo" name="nuevo" required>
+      </div>
+      <div class="texto">
+        <label for="antiguo">Antiguo Nombre:</label>
+        <input type="texto" id="antiguo" name="antiguo" required>
+      </div>
+
+
+      <div class="texto">
+        <label for="Ntelefono">Nuevo Telefono:</label>
+        <input type="texto"  name="Ntelefono" required>
+      </div> 
+      <div class="texto">
+        <label for="Atelefono">Antiguo Telefono:</label>
+        <input type="texto"  name="Atelefono" required>
+      </div> 
+
+
+       <div class="texto">
+        <label for="Nweb">Nueva Web:</label>
+        <input type="texto" name="Nweb"  required>
+      </div>
+      <div class="texto">
+        <label for="Aweb">Antigua Web:</label>
+        <input type="texto" name="Aweb"  required>
+      </div>
+
+      <div class="texto">
+        <label for="Ndireccion">Nueva Direccion:</label>
+        <input type="texto" name="Ndireccion"  required>
+      </div>
+      <div class="texto">
+        <label for="Adireccion">Antigua Direccion:</label>
+        <input type="texto" name="Adireccion"  required>
+      </div>
+
+
+      <button type="submit">Enviar</button>
+
+
+    </form>
+  </div>
+</body>
+</html>

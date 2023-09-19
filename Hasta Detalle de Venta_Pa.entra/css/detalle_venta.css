@@ -1,0 +1,39 @@
+th, td{
+    padding: 15px; 
+}
+
+table,th, td{
+    border: 2px solid black;
+    border-collapse: collapse;   
+}
+
+div{
+    padding: 5px;
+}
+
+th{
+    background-color: rgb(221, 139, 84) ;
+}
+
+td{
+    background-color: blanchedalmond;
+}
+.cuadro{
+    margin-left: auto;
+    margin-right: auto; 
+    text-align: center;
+    background-color: cadetblue;
+    width: 400px;
+    border-radius: 10px;
+}
+.guardar{
+    text-align: left;
+    border-radius: 5px;
+}
+.te{
+    border-radius: 10px;
+}
+.extra{
+    width: 40%;
+    color: aqua;
+}

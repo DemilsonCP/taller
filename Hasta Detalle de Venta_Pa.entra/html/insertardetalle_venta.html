@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/detalle_venta.css">
+</head>
+<body>
+    <h2 class="extra">.</h2>
+    <div class="cuadro">
+        <div>
+            <h1>Detalle Venta</h1>
+        </div>
+        <form id="formulario">
+            <div class="guardar">
+                <div class="texto">
+                    <label for="opcionesProduct">ID Producto: <select id="opcionesProducto" name="opcionesProduct"></select> </label>
+                </div>
+                <div class="texto">
+                    <label for="opcionesCli">ID Venta: <select id="opcionesventa" name="opcionesCli"></select> </label>
+                </div>
+                <div class="texto">
+                    <label for="cantidadt">Cantidad:</label>
+                    <input type="number" id="cantidad" name="cantidadt" required> 
+                </div> 
+            </div>
+            <div class="guardar">
+                <button type="button" class="guardar" onclick="guardarDatos()">Guardar</button>            
+            </div>
+        </form>
+
+        <div>
+            <table>
+                <thead>
+                    <tr contenteditable="false">
+                        <th class="Ttabla">Precio del producto</th>
+                        <th class="Ttabla">ID Venta</th>
+                        <th class="Ttabla">ID Producto</th>                        
+                        <th class="Ttabla">Cantidad</th>
+                    </tr>  
+                </thead>
+                <tbody id="tablaDatos">
+                     <!-- Aquí se agregarán las filas de datos  -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        function guardarDatos() {
+            // Obtener los valores ingresados por el usuario
+            var nombreproducto = document.getElementById("opcionesProducto").options[document.getElementById("opcionesProducto").selectedIndex].text;
+            var nombreproducto = nombreproducto.split(',')[2];
+            var idVenta = document.getElementById("opcionesventa").value;
+            var idProducto = document.getElementById("opcionesProducto").value;
+            var idProducto= idProducto.split(',')[0];
+            var cantidad = document.getElementById("cantidad").value;
+
+            // Realizar una solicitud AJAX para enviar los datos al servidor
+            enviarDatosAlServidor(nombreproducto, idVenta, idProducto, cantidad);
+        }
+
+        function enviarDatosAlServidor(nombreproducto, idVenta, idProducto, cantidad) {
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "../php/insertardetalleventa.php", true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+            var data = "opcionesProduct=" + encodeURIComponent(idProducto) +
+                       "&cantidadt=" + encodeURIComponent(cantidad) +
+                       "&opcionesCli=" + encodeURIComponent(idVenta);
+
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        // La solicitud se completó correctamente
+                        console.log("Datos enviados al servidor con éxito");
+
+                        // Luego de que se complete la solicitud, agregar la fila a la tabla
+                        agregarFila(idProducto, idVenta, cantidad);
+
+                        // Limpiar los campos del formulario
+                        document.getElementById("cantidad").value = "";
+                    } else {
+                        // Ocurrió un error en la solicitud
+                        console.error("Error al enviar datos al servidor");
+                    }
+                }
+            };
+
+            // Enviar la solicitud con los datos del formulario
+            xhr.send(data);
+        }
+
+        function agregarFila(idProducto, idVenta, cantidad) {
+            // Obtener los valores ingresados por el usuario
+            var nombreproducto = document.getElementById("opcionesProducto").options[document.getElementById("opcionesProducto").selectedIndex].text;
+            var nombreproducto = nombreproducto.split(',')[2];
+            var precio = parseInt(nombreproducto);
+            var x=parseInt(cantidad);
+            var total=precio*x;
+            // Crear una nueva fila en la tabla
+            var tabla = document.getElementById("tablaDatos");
+            var fila = tabla.insertRow();
+
+            // Insertar celdas en la fila
+            var celdanombreproducto = fila.insertCell(0);
+            var celdaidVenta = fila.insertCell(1);
+            var celdaidProducto = fila.insertCell(2);
+            var celdacantidad = fila.insertCell(3);
+
+            // Agregar los valores a las celdas
+            celdanombreproducto.innerHTML = nombreproducto;
+            celdaidVenta.innerHTML = idVenta;
+            celdaidProducto.innerHTML = idProducto;
+            celdacantidad.innerHTML = cantidad;
+
+            // Limpiar los campos del formulario
+            document.getElementById("cantidad").value = "";
+            console.log("Total: " + total);
+            enviarTotalAlServidor(idVenta, total);
+        }
+    </script>
+    <script>
+        function enviarTotalAlServidor(idVenta, total) {
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "../php/insertarventaEXTRA.php", true); // Reemplaza "../php/enviartotal.php" con la ruta correcta a tu script PHP
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        
+            var data = "idVenta=" + encodeURIComponent(idVenta) +
+                       "&total=" + encodeURIComponent(total);
+        
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        // La solicitud se completó correctamente
+                        console.log("Total enviado al servidor con éxito");
+                    } else {
+                        // Ocurrió un error en la solicitud
+                        console.error("Error al enviar el total al servidor");
+                    }
+                }
+            };
+        
+            // Enviar la solicitud con los datos del total y el ID de venta
+            xhr.send(data);
+        }
+    </script>
+
+
+ <script>
+        function cargarListaClientes() {
+          // Realizar una solicitud AJAX para obtener las opciones desde la función PHP
+          var xhr = new XMLHttpRequest();
+          xhr.open("GET", "../php/opcionesIDventa.php", true);
+          xhr.onreadystatechange = function() {
+              if (xhr.readyState === 4 && xhr.status === 200) {
+                  // Parsear la respuesta JSON
+                  var opciones = JSON.parse(xhr.responseText);
+  
+                  // Obtener la lista desplegable
+                  var select = document.getElementById("opcionesventa");
+  
+                  // Llenar la lista desplegable con las opciones
+                  for (var i = 0; i < opciones.length; i++) {
+                      var option = document.createElement("option");
+                      option.text = opciones[i];
+                      select.appendChild(option);
+                  }
+              }
+          };
+          xhr.send();
+      }
+     // Llamar a la función para cargar las opciones al cargar la página
+    cargarListaClientes();
+ </script>
+
+ </div>
+    
+    <script>
+        function cargarIDproducto() {
+          // Realizar una solicitud AJAX para obtener las opciones desde la función PHP
+          var xhr = new XMLHttpRequest();
+          xhr.open("GET", "../php/opcionesIDpro.php", true);
+          xhr.onreadystatechange = function() {
+              if (xhr.readyState === 4 && xhr.status === 200) {
+                  // Parsear la respuesta JSON
+                  var opciones = JSON.parse(xhr.responseText);
+  
+                  // Obtener la lista desplegable
+                  var select = document.getElementById("opcionesProducto");
+  
+                  // Llenar la lista desplegable con las opciones
+                  for (var i = 0; i < opciones.length; i++) {
+                      var option = document.createElement("option");
+                      option.text = opciones[i];
+                      select.appendChild(option);
+                  }
+              }
+          };
+          xhr.send();
+      }
+            // Llamar a la función para cargar las opciones al cargar la página
+    cargarIDproducto();
+      </script>
+</body>
+</html>

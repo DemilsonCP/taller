@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/venta.css">
+</head>
+<body>
+    <div class="cuadro">
+
+        <center><h2>VENTAS</h2> </center> 
+    
+        <form action="../php/insertarventa.php" method="POST" id="formulario">
+    
+          <div class="texto">
+            <label for="opcionesCli">NIT Cliente: <select id="opcionesClientes" name="opcionesCli"></select> </label>
+
+          </div>
+    
+          <div class="texto">
+            <label for="fecha">Fecha: </label>
+            <input type="date"  name="fecha"  required>
+          </div>
+
+          <div class="texto">
+            <label for="descuento">Descuento: </label>
+            <input type="number"  name="descuento"  required>
+          </div>
+
+          <button type="submit" id="guardar">Enviar</button>
+        </form>
+      </div>
+
+      <script>
+        function cargarListaClientes() {
+          // Realizar una solicitud AJAX para obtener las opciones desde la función PHP
+          var xhr = new XMLHttpRequest();
+          xhr.open("GET", "../php/opciones.php", true);
+          xhr.onreadystatechange = function() {
+              if (xhr.readyState === 4 && xhr.status === 200) {
+                  // Parsear la respuesta JSON
+                  var opciones = JSON.parse(xhr.responseText);
+  
+                  // Obtener la lista desplegable
+                  var select = document.getElementById("opcionesClientes");
+  
+                  // Llenar la lista desplegable con las opciones
+                  for (var i = 0; i < opciones.length; i++) {
+                      var option = document.createElement("option");
+                      option.text = opciones[i];
+                      select.appendChild(option);
+                  }
+              }
+          };
+          xhr.send();
+      }
+      cargarListaClientes();
+      </script>
+</body>
+</html>

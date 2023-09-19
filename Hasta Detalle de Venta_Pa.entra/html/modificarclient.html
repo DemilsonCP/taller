@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="http://localhost/ejercicio%20PHP/sistema_venta/css/modificarclient.css">
+
+<title>Modificar Cliente</title>
+</head>
+<body>
+
+
+  <div class="cuadro">
+
+    <center><h2>DATOS DEL NOMBRE A MODIFICAR</h2> </center> 
+
+    <form action="../php/modificarclient.php" method="POST">
+
+      <div class="texto">
+        <label for="nuevo">Nuevo ID Producto:</label>
+        <input type="text" id="nuevo" name="nuevo" required>
+      </div>
+      <div class="texto">
+        <label for="antiguo">Antiguo ID Producto:</label>
+        <input type="texto" id="antiguo" name="antiguo" required>
+      </div>
+
+
+      <div class="texto">
+        <label for="Ntelefono">Nuevo ID Venta:</label>
+        <input type="texto"  name="Ntelefono" required>
+      </div> 
+      <div class="texto">
+        <label for="Atelefono">Antiguo ID Venta:</label>
+        <input type="texto"  name="Atelefono" required>
+      </div> 
+
+      
+       <div class="texto">
+        <label for="NCantidad">Nueva Cantidad:</label>
+        <input type="texto" name="NCantidad" required>
+      </div> 
+      <div class="texto">
+        <label for="ACantidad">Antigua Cantidad:</label>
+        <input type="texto" name="ACantidad" required>
+      </div> 
+
+
+      <button type="submit">Enviar</button>
+
+
+    </form>
+  </div>
+</body>
+</html>

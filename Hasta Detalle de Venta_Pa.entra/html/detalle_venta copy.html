@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/detalle_venta.css">
+</head>
+<body>
+  <div class="cuadro">
+    <div>
+    <h1>
+        Detalle Venta
+    </h1>  
+    </div>
+    <form action="../php/insertarDetalleVenta.php" id="formulario">
+    <div class="guardar">
+
+        <div class="texto">
+            <label for="opcionesProducto">ID Producto: <select id="opcionesProducto" name="opcionesProduct"></select> </label>
+            </div>
+
+        <div class="texto">
+        <label for="opcionesventa">ID Venta: <select id="opcionesventa" name="opcionesCli"></select> </label>
+        </div>
+
+        <div class="texto">
+            <label for="cantidad">Cantidad:</label>
+            <input type="number" id="cantidad" name="cantidad" required> 
+        </div> 
+<!--
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                var opcionesClientes = document.getElementById("opcionesProduct");
+                var guardarButton = document.getElementById("guardar");
+        
+                guardarButton.addEventListener("click", function () {
+                    // Obtener el valor seleccionado del select
+                    var selectedValue = opcionesClientes.value;
+        
+                    // Enviar el valor al servidor (puedes usar AJAX o Fetch)
+                    // Reemplaza esta parte con la lógica para enviar el valor al servidor
+                    // Aquí se muestra un ejemplo usando Fetch
+                    fetch('../php/insertarDetalleVenta.php', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ nit: selectedValue })
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log("Valor enviado al servidor con éxito:", data);
+                    })
+                    .catch(error => {
+                        console.error("Error al enviar el valor al servidor:", error);
+                    });
+                });
+            });
+        </script>
+ 
+    <div >
+        <table>
+            <thead>
+                <tr contenteditable="false">
+                    <th class="Ttabla">Nº </th> 
+                    <th class="Ttabla">Nombre del producto</th>
+                    <th class="Ttabla">Cantidad</th>
+                    <th class="Ttabla">Precio Unitario</th>
+                </tr>  
+            </thead>
+        </thead>
+        <tbody id="tablaDatos">
+             Aquí se agregarán las filas de datos 
+        </tbody> -->
+
+        </div>
+        <div class="guardar">
+        <button type="submit" class="guardar" >Guardar</button>            
+        </div>
+    </div>
+        </form>
+
+
+
+    <!-- <script>
+        function agregarFila() {
+            // Obtener los valores ingresados por el usuario
+            var nombre = document.getElementById("opcionesProducto").value;
+            var edad = document.getElementById("nit").value;
+            var fecha = document.getElementById("cantidad").value;
+            var nit = document.getElementById("Punitario").value;
+
+            // Crear una nueva fila en la tabla
+            var tabla = document.getElementById("tablaDatos");
+            var fila = tabla.insertRow();
+
+            // Insertar celdas en la fila
+            var celdaNombre = fila.insertCell(0);
+            var celdaEdad = fila.insertCell(1);
+            var celdaFecha = fila.insertCell(2);
+            var celdaNit = fila.insertCell(3);
+
+            // Agregar los valores a las celdas
+            celdaNombre.innerHTML = nombre;
+            celdaEdad.innerHTML = edad;
+            celdaFecha.innerHTML = fecha;
+            celdaNit.innerHTML = nit;
+
+            // Limpiar los campos del formulario
+            document.getElementById("nombre").value = "";
+            document.getElementById("edad").value = "";
+            document.getElementById("fecha").value = "";
+            document.getElementById("nit").value = "";
+        }
+    </script>
+ -->
+
+ <script>
+
+        function cargarListaClientes() {
+          // Realizar una solicitud AJAX para obtener las opciones desde la función PHP
+          var xhr = new XMLHttpRequest();
+          xhr.open("GET", "../php/opcionesIDventa.php", true);
+          xhr.onreadystatechange = function() {
+              if (xhr.readyState === 4 && xhr.status === 200) {
+                  // Parsear la respuesta JSON
+                  var opciones = JSON.parse(xhr.responseText);
+  
+                  // Obtener la lista desplegable
+                  var select = document.getElementById("opcionesventa");
+  
+                  // Llenar la lista desplegable con las opciones
+                  for (var i = 0; i < opciones.length; i++) {
+                      var option = document.createElement("option");
+                      option.text = opciones[i];
+                      select.appendChild(option);
+                  }
+              }
+          };
+          xhr.send();
+      }
+  
+
+        function cargarIDproducto() {
+          // Realizar una solicitud AJAX para obtener las opciones desde la función PHP
+          var xhr = new XMLHttpRequest();
+          xhr.open("GET", "../php/opcionesIDpro.php", true);
+          xhr.onreadystatechange = function() {
+              if (xhr.readyState === 4 && xhr.status === 200) {
+                  // Parsear la respuesta JSON
+                  var opciones = JSON.parse(xhr.responseText);
+  
+                  // Obtener la lista desplegable
+                  var select = document.getElementById("opcionesProducto");
+  
+                  // Llenar la lista desplegable con las opciones
+                  for (var i = 0; i < opciones.length; i++) {
+                      var option = document.createElement("option");
+                      option.text = opciones[i];
+                      select.appendChild(option);
+                  }
+              }
+          };
+          xhr.send();
+      }
+  
+      // Llamar a la función para cargar las opciones al cargar la página
+    cargarListaClientes();
+            // Llamar a la función para cargar las opciones al cargar la página
+    cargarIDproducto();
+
+      </script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modificar Proveedor</title>
+<link rel="stylesheet" href="http://localhost/ejercicio%20PHP/sistema_venta/css/modificarprove.css">
+</head>
+<body>
+
+
+  <div class="cuadro">
+
+    <center><h2>DATOS DEL NOMBRE A MODIFICAR</h2> </center> 
+
+    <form action="../php/modificarventa.php" method="POST">
+
+      <div class="texto">
+        <label for="nuevo">Nuevo NIT:</label>
+        <input type="text" id="nuevo" name="nuevo" required>
+      </div>
+      <div class="texto">
+        <label for="antiguo">Antiguo NIT:</label>
+        <input type="texto" id="antiguo" name="antiguo" required>
+      </div>
+
+
+      <div class="texto">
+        <label for="Nfecha">Nueva Fecha:</label>
+        <input type="date"  name="Nfecha" required>
+      </div> 
+      <div class="texto">
+        <label for="Afecha">Antigua Fecha:</label>
+        <input type="date"  name="Afecha" required>
+      </div> 
+
+
+       <div class="texto">
+        <label for="Nfinal">Nuevo Monto Final:</label>
+        <input type="texto" name="Nfinal"  required>
+      </div>
+      <div class="texto">
+        <label for="Afinal">Antigua Monto Final:</label>
+        <input type="texto" name="Afinal"  required>
+      </div>
+
+      <div class="texto">
+        <label for="Ndes">Nuevo Descuento:</label>
+        <input type="texto" name="Ndes"  required>
+      </div>
+      <div class="texto">
+        <label for="Ades">Antiguo Descuento:</label>
+        <input type="texto" name="Ades"  required>
+      </div>
+
+
+      <button type="submit">Enviar</button>
+
+
+    </form>
+  </div>
+</body>
+</html>
