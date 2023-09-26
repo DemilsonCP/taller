@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="http://localhost/ejercicio%20PHP/sistema_venta/css/insertar.css">
+<title>Modificar Producto</title>
+</head>
+<body>
+
+
+  <div class="cuadro">
+
+    <center><h2>DATOS DEL NOMBRE A MODIFICAR</h2> </center> 
+
+    <form action="../php/modificar.php" method="POST">
+
+      <div class="texto">
+        <label for="nuevo">Nuevo Nombre:</label>
+        <input type="text" id="nuevo" name="nuevo" required>
+      </div>
+
+      <div class="texto">
+        <label for="antiguo">Antiguo Nombre:</label>
+        <input type="texto" id="antiguo" name="antiguo" required>
+      </div>
+
+       <div class="texto">
+        <label for="Nprecio">Nuevo Precio:</label>
+        <input type="number" id="Nprecio" name="Nprecio" required>
+      </div> 
+
+       <div class="texto">
+        <label for="Aprecio">Antiguo Precio:</label>
+        <input type="number" id="Aprecio" name="Aprecio" required>
+      </div>
+
+      <div class="texto">
+        <label for="Nstock">Nuevo Stock:</label>
+        <input type="number" id="Nstock" name="Nstock" required>
+      </div> 
+
+       <div class="texto">
+        <label for="Astock">Antiguo Stock:</label>
+        <input type="number" id="Astock" name="Astock" required>
+      </div>
+
+        <div class="texto">
+        <label for="Nidcategoria">Nuevo ID_Categoria:</label>
+        <input type="number" id="Nidcategoria" name="Nidcategoria"  required>
+      </div>  
+
+      <div class="texto">
+        <label for="Aidcategoria">Antiguo ID_Categoria:</label>
+        <input type="number" id="Aidcategoria" name="Aidcategoria"  required>
+      </div>   
+
+      <button type="submit">Enviar</button>
+
+
+    </form>
+  </div>
+</body>
+</html>

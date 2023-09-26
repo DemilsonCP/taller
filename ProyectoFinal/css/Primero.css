@@ -1,0 +1,11 @@
+.principal{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5%;
+}
+.principal > img{
+    border-radius: 10%;
+    width: auto;
+    height: auto;
+}

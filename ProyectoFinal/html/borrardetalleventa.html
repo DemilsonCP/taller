@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="http://localhost/ejercicio%20PHP/sistema_venta/css/detalle_venta.css">
+
+<title>Borrar Detalle Venta</title>
+</head>
+<body>
+
+
+  <div class="cuadro">
+
+    <center><h2>RELLENAR EL DATOS A BORRAR</h2> </center> 
+
+    <form action="../php/borrardetalleventa.php" method="POST">
+
+      <div class="texto">
+        <label for="ID">ID: <select  id="Eliminar" name="ID"></select></label>
+        <!-- <input type="number"  name="ID" required> -->
+      </div>
+
+      <button type="submit">Enviar</button>
+    </form>
+  </div>
+
+  <script>
+    function cargarListaClientes() {
+      // Realizar una solicitud AJAX para obtener las opciones desde la función PHP
+      var xhr = new XMLHttpRequest();
+      xhr.open("GET", "../php/opcionesdetalleventa_Eliminar.php", true);
+      xhr.onreadystatechange = function() {
+          if (xhr.readyState === 4 && xhr.status === 200) {
+              // Parsear la respuesta JSON
+              var opciones = JSON.parse(xhr.responseText);
+
+              // Obtener la lista desplegable
+              var select = document.getElementById("Eliminar");
+
+              // Llenar la lista desplegable con las opciones
+              for (var i = 0; i < opciones.length; i++) {
+                  var option = document.createElement("option");
+                  option.text = opciones[i];
+                  select.appendChild(option);
+              }
+          }
+      };
+      xhr.send();
+  }
+ // Llamar a la función para cargar las opciones al cargar la página
+cargarListaClientes();
+</script>
+</body>
+</html>

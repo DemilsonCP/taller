@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modificar Detalle Venta</title>
+<link rel="stylesheet" href="http://localhost/ejercicio%20PHP/sistema_venta/css/detalle_venta.css">
+</head>
+<body>
+
+
+  <div class="cuadro">
+
+    <center><h2>DATOS DEL NOMBRE A MODIFICAR</h2> </center> 
+
+    <form action="../php/modificardetalleventa.php" method="POST">
+
+      <div class="texto">
+        <label for="NIDventa">Nuevo ID Venta: </label>
+        <input type="text" id="NIDventa" name="NIDventa" required> 
+      </div>
+      <div class="texto">
+        <label for="AIDventa">Antiguo ID Venta:<select id="opcionesIDventa" name="AIDventa"></select></label>
+      </div>
+
+
+      <div class="texto">
+        <label for="NIDproducto">Nuevo ID Producto:</label>
+        <input type="texto"  name="NIDproducto" required>
+      </div> 
+      <div class="texto">
+        <label for="AIDproducto">Antiguo ID Producto:<select id="opcionesIDproducto" name="AIDproducto"></select></label>
+      </div> 
+
+
+       <div class="texto">
+        <label for="Ncantidad">Nueva Cantidad:</label>
+        <input type="texto" name="Ncantidad"  required>
+      </div>
+      <div class="texto">
+        <label for="Acantidad">Antigua Cantidad:<select id="opcionescantidad" name="Acantidad"></select></label>
+      </div>
+
+      <button type="submit">Enviar</button>
+
+
+    </form>
+
+    <script>
+      function detalle_IDproducto() {
+        // Realizar una solicitud AJAX para obtener las opciones desde la función PHP
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "../php/opcionesdetalleventa_producto.php", true);
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                // Parsear la respuesta JSON
+                var opciones = JSON.parse(xhr.responseText);
+
+                // Obtener la lista desplegable
+                var select = document.getElementById("opcionesIDproducto");
+
+                // Llenar la lista desplegable con las opciones
+                for (var i = 0; i < opciones.length; i++) {
+                    var option = document.createElement("option");
+                    option.text = opciones[i];
+                    select.appendChild(option);
+                }
+            }
+        };
+        xhr.send();
+    }
+    detalle_IDproducto();
+    </script>
+    
+    <script>
+    function detalle_cantidad() {
+      // Realizar una solicitud AJAX para obtener las opciones desde la función PHP
+      var xhr = new XMLHttpRequest();
+      xhr.open("GET", "../php/opcionesdetalleventa_cantidad.php", true);
+      xhr.onreadystatechange = function() {
+          if (xhr.readyState === 4 && xhr.status === 200) {
+              // Parsear la respuesta JSON
+              var opciones = JSON.parse(xhr.responseText);
+
+              // Obtener la lista desplegable
+              var select = document.getElementById("opcionescantidad");
+
+              // Llenar la lista desplegable con las opciones
+              for (var i = 0; i < opciones.length; i++) {
+                  var option = document.createElement("option");
+                  option.text = opciones[i];
+                  select.appendChild(option);
+              }
+          }
+      };
+      xhr.send();
+  }
+  detalle_cantidad() ;
+  </script>
+
+  <script>
+  function detalle_IDproducto() {
+    // Realizar una solicitud AJAX para obtener las opciones desde la función PHP
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "../php/opcionesdetalleventa_venta.php", true);
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            // Parsear la respuesta JSON
+            var opciones = JSON.parse(xhr.responseText);
+
+            // Obtener la lista desplegable
+            var select = document.getElementById("opcionesIDventa");
+
+            // Llenar la lista desplegable con las opciones
+            for (var i = 0; i < opciones.length; i++) {
+                var option = document.createElement("option");
+                option.text = opciones[i];
+                select.appendChild(option);
+            }
+        }
+    };
+    xhr.send();
+}
+detalle_IDproducto();
+    </script>
+    <script></script>
+  </div>
+</body>
+</html>

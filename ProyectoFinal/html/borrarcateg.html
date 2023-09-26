@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="http://localhost/ejercicio%20PHP/sistema_venta/css/insertarcateg.css">
+<title>Borrar Categoria</title>
+</head>
+<body>
+
+
+  <div class="cuadro">
+
+    <center><h2>RELLENAR EL DATOS A BORRAR</h2> </center> 
+
+    <form action="../php/borrarcateg.php" method="POST">
+
+      <div class="texto">
+        <label for="nombre">ID Categoria:<select id="opcionesCateg" name="nombre"></select></label>
+      </div>
+
+      <button type="submit">Enviar</button>
+    </form>
+  </div>
+
+  <script>
+    function cargarIDcateg() {
+     // Realizar una solicitud AJAX para obtener las opciones desde la función PHP
+     var xhr = new XMLHttpRequest();
+     xhr.open("GET", "../php/opcionesIDcateg.php", true);
+     xhr.onreadystatechange = function() {
+         if (xhr.readyState === 4 && xhr.status === 200) {
+             // Parsear la respuesta JSON
+             var opciones = JSON.parse(xhr.responseText);
+
+             // Obtener la lista desplegable
+             var select = document.getElementById("opcionesCateg");
+
+             // Llenar la lista desplegable con las opciones
+             for (var i = 0; i < opciones.length; i++) {
+                 var option = document.createElement("option");
+                 option.text = opciones[i];
+                 select.appendChild(option);
+             }
+         }
+     };
+     xhr.send();
+ }
+       // Llamar a la función para cargar las opciones al cargar la página
+cargarIDcateg();
+</script>
+</body>
+</html>

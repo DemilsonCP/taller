@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion de Negocio</title>
+    <link rel="stylesheet" href="../css/indexsegunda.css">
+</head>
+<body>
+    <h1>GESTION DE NEGOCIO</h1>
+    <header>
+        <nav class="navegacion">
+            <ul class="menu">
+                <li><a href="#">CLIENTE</a>
+                    <ul class="submenu">
+                        <li><a href="../html/insertarclient.html" target="frame">Insertar</a></li>
+                        <li><a href="../html/modificarclient.html" target="frame">Modificar</a></li>
+                        <li><a href="../html/borrarclient.html" target="frame">Borrar</a></li>
+                        <li><a href="../php/mostrarclient.php" target="frame">Mostrar</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">PROVEEDOR</a>
+                    <ul class="submenu">
+                        <li><a href="../html/insertarprove.html" target="frame">Insertar</a></li>
+                        <li><a href="../html/modificarprove.html" target="frame">Modificar</a></li>
+                        <li><a href="../html/borrarprove.html" target="frame">Borrar</a></li>
+                        <li><a href="../php/mostrarprove.php" target="frame">Mostrar</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">PRODUCTO</a>
+                    <ul class="submenu">
+                        <li><a href="../html/insertar.html" target="frame">Insertar</a></li>
+                        <li><a href="../html/modificar.html" target="frame">Modificar</a></li>
+                        <li><a href="../html/borrar.html" target="frame">Borrar</a></li>
+                        <li><a href="../php/mostrar.php" target="frame">Mostrar</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">CATEGORIA</a>
+                    <ul class="submenu">
+                        <li><a href="../html/insertarcateg.html" target="frame">Insertar</a></li>
+                        <li><a href="../html/modificarcateg.html" target="frame">Modificar</a></li>
+                        <li><a href="../html/borrarcateg.html" target="frame">Borrar</a></li>
+                        <li><a href="../php/mostrarcateg.php" target="frame">Mostrar</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">VENTA</a>
+                    <ul class="submenu">
+                        <li><a href="insertarventa.html" target="frame">Insertar</a></li>
+                        <li><a href="modificarventa.html" target="frame">Modificar</a></li> 
+                        <li><a href="borrarventa.html" target="frame">Borrar</a></li>
+                        <li><a href="../php/mostrarventa.php" target="frame">Mostrar</a></li>
+                        <li><a href="modificardetalleventa.html" target="frame">Modfcar_D</a></li>
+                    </ul>
+                </li>
+                 <li><a  onclick="terminar()">TERMINAR</a>
+                </li> 
+            </ul>
+        </nav>
+    </header>
+    <div>
+        <iframe src="nuevo.html" name="frame" width="100%"  height="600px"></iframe>
+    </div>
+    <script>
+        function terminar(){
+            
+            window.open("index.html"); 
+            window.close();
+        }
+    </script>
+</body>
+</html>
