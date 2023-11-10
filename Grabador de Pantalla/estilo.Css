@@ -1,0 +1,34 @@
+body {
+    background-color: aqua;
+    background-image: url(Grabador.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.botones {
+    text-align: center;
+    padding: 2%;
+}
+
+
+h1 {
+    text-align: center;
+    padding: 2%;
+    font-size: 40px;
+    color:rgb(240, 129, 38);
+}
+
+h2 {
+    text-align: center;
+    color: rgb(18, 19, 17);
+    font-weight: bold;
+}
+h2:hover{
+    color: rgb(245, 164, 164);
+}
+
+#Control{
+    height: 200px; 
+    width: 300px;
+}
